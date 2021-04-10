@@ -54,6 +54,9 @@ class LinkedList
     {
         Node currentNode = searchNode(afterKey);
 
+        if (currentNode == null)
+            return;
+
         Node newNode = new Node(givenKey);
 
         newNode.next = currentNode.next;
