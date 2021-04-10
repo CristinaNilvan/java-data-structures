@@ -95,6 +95,10 @@ class LinkedList
     public void deleteGivenKey(int givenKey)
     {
         Node toDelete = first;
+
+        if (toDelete == null)
+            return;
+
         Node previousNode = null;
 
         while (toDelete != null)
@@ -105,9 +109,6 @@ class LinkedList
             previousNode = toDelete;
             toDelete = toDelete.next;
         }
-
-        if (toDelete == null)
-            return;
 
         if (toDelete == first)
         {
