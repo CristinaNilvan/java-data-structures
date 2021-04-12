@@ -132,6 +132,40 @@ public class BinarySearchTree
         return predecessor;
     }
 
+    public Node deleteNode (Node root, int key)
+    {
+        if (root == null)
+            return root;
+
+        Node node;
+
+        if (key < root.key)
+            root.left = deleteNode(root.left, key);
+        else
+        if (key > root.key)
+            root.right = deleteNode(root.right, key);
+        else
+        {
+            if (root.left == null)
+            {
+                node = root.right;
+                return node;
+            }
+            else
+            if (root.right == null)
+            {
+                node = root.left;
+                return node;
+            }
+
+            node = findMinimum(root.right);
+            root.key = node.key;
+            root.right = deleteNode(root.right, node.key);
+        }
+
+        return root;
+    }
+
     public void inOrderPrinting(Node root)
     {
         if(root != null)
@@ -214,6 +248,18 @@ public class BinarySearchTree
             System.out.println("The node doesn't have a predecessor");
     }
 
+    public static void testsDeletion(BinarySearchTree myTree)
+    {
+        int key = 15;
+
+        System.out.println("Node to delete : " + key);
+
+        myTree.root = myTree.deleteNode(myTree.root, key);
+
+        myTree.inOrderPrinting(myTree.root);
+        System.out.println();
+    }
+
     public static void testsPrinting(BinarySearchTree myTree)
     {
         myTree.inOrderPrinting(myTree.root);
@@ -239,5 +285,7 @@ public class BinarySearchTree
         testsPredecessor(myTree);
 
         testsPrinting(myTree);
+        
+        testsDeletion(myTree);
     }
 }
