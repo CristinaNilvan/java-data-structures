@@ -135,65 +135,65 @@ public class BinarySearchTree
     public Node deleteNode (Node root, int key)
     {
         if (root == null)
-            return root;
+            return null;
 
         Node node;
 
         if (key < root.key)
             root.left = deleteNode(root.left, key);
         else
-        if (key > root.key)
-            root.right = deleteNode(root.right, key);
-        else
-        {
-            if (root.left == null)
-            {
-                node = root.right;
-                return node;
-            }
+            if (key > root.key)
+                root.right = deleteNode(root.right, key);
             else
-            if (root.right == null)
             {
-                node = root.left;
-                return node;
-            }
+                if (root.left == null)
+                {
+                    node = root.right;
+                    return node;
+                }
 
-            node = findMinimum(root.right);
-            root.key = node.key;
-            root.right = deleteNode(root.right, node.key);
-        }
+                if (root.right == null)
+                {
+                    node = root.left;
+                    return node;
+                }
+
+                node = findMinimum(root.right);
+                root.key = node.key;
+                root.right = deleteNode(root.right, node.key);
+            }
 
         return root;
     }
 
     public void inOrderPrinting(Node root)
     {
-        if(root != null)
-        {
-            inOrderPrinting(root.left);
-            System.out.print(root.key + " ");
-            inOrderPrinting(root.right);
-        }
+        if (root == null)
+            return;
+
+        inOrderPrinting(root.left);
+        System.out.print(root.key + " ");
+        inOrderPrinting(root.right);
     }
 
     public void preOrderPrinting(Node root)
     {
-        if (root != null)
-        {
-            System.out.print(root.key + " ");
-            preOrderPrinting(root.left);
-            preOrderPrinting(root.right);
-        }
+        if (root == null)
+            return;
+
+        System.out.print(root.key + " ");
+        preOrderPrinting(root.left);
+        preOrderPrinting(root.right);
     }
 
     public void postOrderPrinting(Node root)
     {
-        if (root != null)
-        {
-            postOrderPrinting(root.left);
-            postOrderPrinting(root.right);
-            System.out.print(root.key + " ");
-        }
+        if (root == null)
+            return;
+
+        postOrderPrinting(root.left);
+        postOrderPrinting(root.right);
+        System.out.print(root.key + " ");
     }
 
     public static void testsInsertion(BinarySearchTree myTree)
@@ -232,7 +232,7 @@ public class BinarySearchTree
         if (successor != null)
             System.out.println("The node with key = " + node.key + " has " + successor.key + " as successor.");
         else
-            System.out.println("The node doesn't have a successor");
+            System.out.println("The node doesn't have a successor.");
     }
 
     public static void testsPredecessor(BinarySearchTree myTree)
@@ -245,7 +245,7 @@ public class BinarySearchTree
         if (predecessor != null)
             System.out.println("The node with key = " + node.key + " has " + predecessor.key + " as predecessor.");
         else
-            System.out.println("The node doesn't have a predecessor");
+            System.out.println("The node doesn't have a predecessor.");
     }
 
     public static void testsDeletion(BinarySearchTree myTree)
@@ -281,7 +281,6 @@ public class BinarySearchTree
         testsSearch(myTree);
 
         testsSuccessor(myTree);
-
         testsPredecessor(myTree);
 
         testsPrinting(myTree);
