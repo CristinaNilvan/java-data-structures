@@ -45,9 +45,9 @@ public class BinarySearchTree
             return node;
 
         if (node.key < key)
-            return searchNode(node.left, key);
+            return searchNode(node.right, key);
 
-        return searchNode(node.right, key);
+        return searchNode(node.left, key);
     }
 
     public Node findMinimum(Node root)
