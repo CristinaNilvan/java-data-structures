@@ -1,18 +1,8 @@
-public class Queue
-{
-    static class Node
-    {
-        int key;
-        Node next;
-
-        Node(int data) { key = data; next = null; }
-    }
-
+public class Queue {
     Node first;
     Node last;
 
-    public void enqueue(int key)
-    {
+    public void enqueue(int key) {
         Node newNode = new Node(key);
 
         if (last == null)
@@ -23,8 +13,7 @@ public class Queue
         last = newNode;
     }
 
-    public void dequeue()
-    {
+    public void dequeue() {
         if (first == null)
             return;
 
@@ -34,30 +23,14 @@ public class Queue
             last = null;
     }
 
-    public void printQueue()
-    {
+    public void printQueue() {
         System.out.println("My queue is :");
 
         Node currentNode = first;
 
-        while (currentNode != null)
-        {
+        while (currentNode != null) {
             System.out.print(currentNode.key + " ");
             currentNode = currentNode.next;
         }
-    }
-
-    public static void main(String[] args)
-    {
-        Queue myQueue = new Queue();
-
-        myQueue.enqueue(4);
-        myQueue.enqueue(5);
-        myQueue.enqueue(6);
-        myQueue.enqueue(7);
-
-        myQueue.dequeue();
-
-        myQueue.printQueue();
     }
 }
