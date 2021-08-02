@@ -1,57 +1,48 @@
-public class DoublyLinkedList
-{
+public class DoublyLinkedList {
     Node first;
     Node last;
 
-    static class Node
-    {
+    static class Node {
         int key;
         Node next;
         Node prev;
 
-        Node(int data) {key = data; next = null; prev = null; }
+        Node(int data) {
+            key = data;
+            next = null;
+            prev = null;
+        }
     }
 
-    public void insertFirst(int key)
-    {
+    public void insertFirst(int key) {
         Node newNode = new Node(key);
 
-        if (first == null)
-        {
+        if (first == null) {
             first = newNode;
             last = newNode;
-        }
-        else
-        {
+        } else {
             newNode.next = first;
             first.prev = newNode;
             first = newNode;
         }
     }
 
-    public void insertLast(int key)
-    {
+    public void insertLast(int key) {
         Node newNode = new Node(key);
 
-        if (last == null)
-        {
+        if (last == null) {
             first = newNode;
-            last = newNode;
-        }
-        else
-        {
+        } else {
             newNode.prev = last;
             last.next = newNode;
-            last = newNode;
         }
+        last = newNode;
     }
 
-    public Node searchNode(int givenKey)
-    {
+    public Node searchNode(int givenKey) {
         Node currentNode = first;
 
-        while (currentNode != null)
-        {
+        while (currentNode != null) {
             if (currentNode.key == givenKey)
                 break;
 
@@ -61,8 +52,7 @@ public class DoublyLinkedList
         return currentNode;
     }
 
-    public void insertAfterKey(int afterKey, int givenKey)
-    {
+    public void insertAfterKey(int afterKey, int givenKey) {
         Node currentNode = searchNode(afterKey);
 
         if (currentNode == null)
@@ -82,8 +72,7 @@ public class DoublyLinkedList
             last = newNode;
     }
 
-    public void deleteFirst()
-    {
+    public void deleteFirst() {
         if (first == null)
             return;
 
@@ -95,8 +84,7 @@ public class DoublyLinkedList
             first.prev = null;
     }
 
-    public void deleteLast()
-    {
+    public void deleteLast() {
         if (last == null)
             return;
 
@@ -108,8 +96,7 @@ public class DoublyLinkedList
             last.next = null;
     }
 
-    public void deleteGivenKey(int givenKey)
-    {
+    public void deleteGivenKey(int givenKey) {
         Node toDelete = searchNode(givenKey);
 
         if (toDelete.prev != null)
@@ -123,8 +110,7 @@ public class DoublyLinkedList
             last = toDelete.prev;
     }
 
-    public void printList()
-    {
+    public void printList() {
         if (first == null)
             return;
 
@@ -132,15 +118,13 @@ public class DoublyLinkedList
 
         Node currentNode = first;
 
-        while (currentNode != null)
-        {
+        while (currentNode != null) {
             System.out.print(currentNode.key + " ");
             currentNode = currentNode.next;
         }
     }
 
-    public static void testsInsertion(DoublyLinkedList myList)
-    {
+    public static void testsInsertion(DoublyLinkedList myList) {
         myList.insertFirst(6);
         myList.insertFirst(7);
 
@@ -153,8 +137,7 @@ public class DoublyLinkedList
         myList.printList();
     }
 
-    public static void testsSearch(DoublyLinkedList myList)
-    {
+    public static void testsSearch(DoublyLinkedList myList) {
         if (myList.searchNode(6) != null)
             System.out.println("The key was found.");
         else
@@ -166,8 +149,7 @@ public class DoublyLinkedList
             System.out.println("The key was not found.");
     }
 
-    public static void testsDeletion(DoublyLinkedList myList)
-    {
+    public static void testsDeletion(DoublyLinkedList myList) {
         myList.deleteFirst();
 
         myList.deleteLast();
@@ -177,8 +159,7 @@ public class DoublyLinkedList
         myList.printList();
     }
 
-    public static void main (String[] args)
-    {
+    public static void main(String[] args) {
         DoublyLinkedList myList = new DoublyLinkedList();
 
         testsInsertion(myList);
