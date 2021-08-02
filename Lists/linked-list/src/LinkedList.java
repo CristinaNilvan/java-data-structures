@@ -1,18 +1,8 @@
-class LinkedList
-{
+class LinkedList {
     Node first;
     Node last;
 
-    static class Node
-    {
-        int key;
-        Node next;
-
-        Node(int data) {key = data; next = null; }
-    }
-
-    public void insertFirst(int key)
-    {
+    public void insertFirst(int key) {
         Node newNode = new Node(key);
 
         if (first == null)
@@ -23,8 +13,7 @@ class LinkedList
         first = newNode;
     }
 
-    public void insertLast(int key)
-    {
+    public void insertLast(int key) {
         Node newNode = new Node(key);
 
         if (last == null)
@@ -35,12 +24,10 @@ class LinkedList
         last = newNode;
     }
 
-    public Node searchNode(int givenKey)
-    {
+    public Node searchNode(int givenKey) {
         Node currentNode = first;
 
-        while (currentNode != null)
-        {
+        while (currentNode != null) {
             if (currentNode.key == givenKey)
                 break;
 
@@ -50,8 +37,7 @@ class LinkedList
         return currentNode;
     }
 
-    public void insertAfterKey(int afterKey, int givenKey)
-    {
+    public void insertAfterKey(int afterKey, int givenKey) {
         Node currentNode = searchNode(afterKey);
 
         if (currentNode == null)
@@ -66,24 +52,21 @@ class LinkedList
             last = newNode;
     }
 
-    public void deleteFirst()
-    {
+    public void deleteFirst() {
         if (first == null)
             return;
 
         first = first.next;
     }
 
-    public void deleteLast()
-    {
+    public void deleteLast() {
         Node toDelete = first;
         Node previousNode = null;
 
         if (toDelete == null)
             return;
 
-        while (toDelete != last)
-        {
+        while (toDelete != last) {
             previousNode = toDelete;
             toDelete = toDelete.next;
         }
@@ -92,8 +75,7 @@ class LinkedList
         last = previousNode;
     }
 
-    public void deleteGivenKey(int givenKey)
-    {
+    public void deleteGivenKey(int givenKey) {
         Node toDelete = first;
 
         if (toDelete == null)
@@ -101,8 +83,7 @@ class LinkedList
 
         Node previousNode = null;
 
-        while (toDelete != null)
-        {
+        while (toDelete != null) {
             if (toDelete.key == givenKey)
                 break;
 
@@ -110,15 +91,12 @@ class LinkedList
             toDelete = toDelete.next;
         }
 
-        if (toDelete == first)
-        {
+        if (toDelete == first) {
             first = first.next;
 
             if (first == null)
                 last = null;
-        }
-        else
-        {
+        } else {
             previousNode.next = toDelete.next;
 
             if (toDelete == last)
@@ -126,21 +104,18 @@ class LinkedList
         }
     }
 
-    public void printList()
-    {
+    public void printList() {
         System.out.println("My list is :");
 
         Node currentNode = first;
 
-        while (currentNode != null)
-        {
+        while (currentNode != null) {
             System.out.print(currentNode.key + " ");
             currentNode = currentNode.next;
         }
     }
 
-    public static void testsInsertion(LinkedList myList)
-    {
+    public static void testsInsertion(LinkedList myList) {
         myList.insertFirst(6);
         myList.insertFirst(7);
 
@@ -153,8 +128,7 @@ class LinkedList
         myList.printList();
     }
 
-    public static void testsSearch(LinkedList myList)
-    {
+    public static void testsSearch(LinkedList myList) {
         if (myList.searchNode(6) != null)
             System.out.println("The key was found.");
         else
@@ -166,8 +140,7 @@ class LinkedList
             System.out.println("The key was not found.");
     }
 
-    public static void testsDeletion(LinkedList myList)
-    {
+    public static void testsDeletion(LinkedList myList) {
         myList.deleteFirst();
 
         myList.deleteLast();
@@ -177,8 +150,7 @@ class LinkedList
         myList.printList();
     }
 
-    public static void main (String[] args)
-    {
+    public static void main(String[] args) {
         LinkedList myList = new LinkedList();
 
         testsInsertion(myList);
