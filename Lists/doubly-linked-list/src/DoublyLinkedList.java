@@ -2,18 +2,6 @@ public class DoublyLinkedList {
     Node first;
     Node last;
 
-    static class Node {
-        int key;
-        Node next;
-        Node prev;
-
-        Node(int data) {
-            key = data;
-            next = null;
-            prev = null;
-        }
-    }
-
     public void insertFirst(int key) {
         Node newNode = new Node(key);
 
@@ -122,56 +110,5 @@ public class DoublyLinkedList {
             System.out.print(currentNode.key + " ");
             currentNode = currentNode.next;
         }
-    }
-
-    public static void testsInsertion(DoublyLinkedList myList) {
-        myList.insertFirst(6);
-        myList.insertFirst(7);
-
-        myList.insertLast(3);
-        myList.insertLast(5);
-
-        myList.insertAfterKey(6, 8);
-        myList.insertAfterKey(3, 9);
-
-        myList.printList();
-    }
-
-    public static void testsSearch(DoublyLinkedList myList) {
-        if (myList.searchNode(6) != null)
-            System.out.println("The key was found.");
-        else
-            System.out.println("The key was not found.");
-
-        if (myList.searchNode(15) != null)
-            System.out.println("The key was found.");
-        else
-            System.out.println("The key was not found.");
-    }
-
-    public static void testsDeletion(DoublyLinkedList myList) {
-        myList.deleteFirst();
-
-        myList.deleteLast();
-
-        myList.deleteGivenKey(8);
-
-        myList.printList();
-    }
-
-    public static void main(String[] args) {
-        DoublyLinkedList myList = new DoublyLinkedList();
-
-        testsInsertion(myList);
-
-        System.out.println();
-        System.out.println();
-
-        testsSearch(myList);
-
-        System.out.println();
-
-        testsDeletion(myList);
-
     }
 }
